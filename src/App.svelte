@@ -16,6 +16,12 @@
 	const handleInput = (e) => {
 		beltColour = e.target.value;
 	};
+
+	let people = [
+		{name:'yoshi', beltColour:'black',age:15, id:1},
+		{name:'mario', beltColour:'orange',age:23, id:2},
+		{name:'loigo', beltColour:'brown',age:21, id:3}
+	]
 </script>
 
 <main>
@@ -28,6 +34,14 @@
 	<button on:click={handleClick}>Let's Click</button>
 	<input type="text" on:input={handleInput} value={beltColour}>
 	<input type="text" bind:value={magicColor}>
+	{#each people as person (person.id)}
+	<div>
+		<h4>{person.name}</h4>
+		<p>{person.age} years old, {person.beltColour} belt.</p>
+	</div>
+	{:else}
+		<p>There are no people to show...</p>
+	{/each}
 </main>
 
 <style>
